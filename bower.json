@@ -1,0 +1,21 @@
+{
+  "name": "homeinventory2",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "march-dave <ysangy@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}
