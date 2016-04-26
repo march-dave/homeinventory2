@@ -4,33 +4,26 @@ var express = require('express');
 var router = express.Router();
 
 var Grade = require('../models/grade');
-
-// router.get('/', function(req, res) {
-//   db.query('select * from description', function(err, grades) {
-//     if(err) return res.send(err);
-//     res.send(grades)
-//   })
-// })
-
+// var Category = require('../models/category');
 
 router.route('/')
-  .get((req, res) => {
-
-    Grade.get((err, grades) => {
-      if(err) {
-        return res.status(400).send(err);
-      }
-      res.send(grades);
-    });
-  })
-  .post((req, res) => {
-    Grade.create(req.body, (err, newGrade) => {
-      if(err) {
-        return res.status(400).send(err);
-      }
-      res.send(newGrade);
-    });
-  });
+  // .get((req, res) => {
+  //
+  //   Grade.get((err, grades) => {
+  //     if(err) {
+  //       return res.status(400).send(err);
+  //     }
+  //     res.send(grades);
+  //   });
+  // })
+  // .post((req, res) => {
+  //   Grade.create(req.body, (err, newGrade) => {
+  //     if(err) {
+  //       return res.status(400).send(err);
+  //     }
+  //     res.send(newGrade);
+  //   });
+  // });
 
   // delete
   router.delete('/:id', (req, res) => {

@@ -30,15 +30,7 @@
       </thead>
       <tbody class='gradeList'>
 
-        <% for(var i = 0; i < grades.length; i++) { %>
-          <tr data-id=<%=grades[i].id%>  >
-            <td class='id'><%= grades[i].id %></td>
-            <td><%= grades[i].make %></td>
-            <td><%= grades[i].model %></td>
-            <td><%= grades[i].serialnumber %></td>
-            <td><input type='checkbox' name='' id='' class='isDelete'></td>
-          </tr>
-        <%  }  %>
+
 
       <tr class='template'>
         <td class='id'></td>
@@ -60,7 +52,15 @@
   		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   		        <h4 class="modal-title" id="myModalLabel">Home Inventory</h4>
   		      </div>
+
+
   		      <div class="modal-body" style="padding: 40px 100px">
+
+              <select class="form-control">
+                <% for(var i = 0; i < cates.length; i++) { %>
+                <option value=<%= cates[i].id %>><%= cates[i].room %></option>
+                <%  }  %>
+              </select>
 
               <div id='id'></div>
 

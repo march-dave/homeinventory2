@@ -2,8 +2,8 @@
 
 $(() => {
     $('.newGrade').click(openNewTodoModal);
-    // $('form.newGradeForm').submit(createNewGrade);
-    $('form.newGradeForm').submit(updateGrade);
+    $('form.newGradeForm').submit(createNewGrade);
+    // $('form.newGradeForm').submit(updateGrade);
 
     $('table').on('click', openModel);
     $('.gradeList').on('click', '.isDelete', deleteGrade);
@@ -94,32 +94,31 @@ function changeCheckbox(e) {
 function createNewGrade(e) {
     e.preventDefault();
 
-    var grade = {
-      name: $('#name').val(),
-      score: $('#score').val(),
-      total: $('#total').val(),
-      grade: $('#grade').val(),
+    var homeinventory = {
+      id: $('#id').val(),
+      make: $('#make').val(),
+      model: $('#model').val(),
+      serialnumber: $('#serialnumber').val(),
     }
 
-    $.post('/api/grades', grade).done(newGrade => {
+    $.post('/api/grades', homeinventory).done(newHomeinventory => {
 
         var $grade = $('.template').clone();
         $grade.removeClass('template');
-        $grade.find('id').text(newGrade.id);
-        $grade.find('.name').text(newGrade.name);
-        $grade.find('.score').text(newGrade.score);
-        $grade.find('.total').text(newGrade.total);
-        $grade.find('.grade').text(newGrade.grade);
+
+        $grade.find('id').text(newHomeinventory.id);
+        $grade.find('.make').text(newHomeinventory.maked);
+        $grade.find('.model').text(newHomeinventory.model);
+        $grade.find('.serialnumber').text(newHomeinventory.serialnumber);
+
+        // Bug: !!!!!! Not working properly!!!!!!!
         $('.gradeList').append($grade);
 
         $('.modal').modal('hide');
     }).fail(err => {
-        console.error('ERROR!!!!', err);
+        console.error('ERROR', err);
     });
 }
-
-
-
 
 function openNewTodoModal() {
     $('.modal').modal('show');
