@@ -96,9 +96,9 @@ function createNewGrade(e) {
 
     var homeinventory = {
       id: $('#id').val(),
-      make: $('#make').val(),
-      model: $('#model').val(),
-      serialnumber: $('#serialnumber').val(),
+      descript: $('#descript').val(),
+      val: $('#val').val(),
+      categoryid: $('#categoryid').val(),
     }
 
     $.post('/api/grades', homeinventory).done(newHomeinventory => {
@@ -107,9 +107,9 @@ function createNewGrade(e) {
         $grade.removeClass('template');
 
         $grade.find('id').text(newHomeinventory.id);
-        $grade.find('.make').text(newHomeinventory.maked);
-        $grade.find('.model').text(newHomeinventory.model);
-        $grade.find('.serialnumber').text(newHomeinventory.serialnumber);
+        $grade.find('.descript').text(newHomeinventory.descript);
+        $grade.find('.val').text(newHomeinventory.val);
+        $grade.find('.categoryid').text(newHomeinventory.categoryid);
 
         // Bug: !!!!!! Not working properly!!!!!!!
         $('.gradeList').append($grade);

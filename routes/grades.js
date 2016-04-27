@@ -7,23 +7,23 @@ var Grade = require('../models/grade');
 // var Category = require('../models/category');
 
 router.route('/')
-  // .get((req, res) => {
-  //
-  //   Grade.get((err, grades) => {
-  //     if(err) {
-  //       return res.status(400).send(err);
-  //     }
-  //     res.send(grades);
-  //   });
-  // })
-  // .post((req, res) => {
-  //   Grade.create(req.body, (err, newGrade) => {
-  //     if(err) {
-  //       return res.status(400).send(err);
-  //     }
-  //     res.send(newGrade);
-  //   });
-  // });
+  .get((req, res) => {
+
+    Grade.get((err, grades) => {
+      if(err) {
+        return res.status(400).send(err);
+      }
+      res.send(grades);
+    });
+  })
+  .post((req, res) => {
+    Grade.create(req.body, (err, newGrade) => {
+      if(err) {
+        return res.status(400).send(err);
+      }
+      res.send(newGrade);
+    });
+  });
 
   // delete
   router.delete('/:id', (req, res) => {

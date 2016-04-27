@@ -27,8 +27,16 @@ exports.get = function(cb) {
   db.query('SELECT * FROM description', cb);
 };
 
+// exports.create = function(grade, cb) {
+//   db.query(`INSERT INTO description (descript, val, categoryid) VALUES ('${grade.make}', '${grade.model}', '${grade.serialnumber}')`,
+//     (err) => {
+//       if(err) return cb(err);
+//       db.query('SELECT * FROM description WHERE ID = (SELECT MAX(ID) FROM description);', cb)
+//     });
+// };
+
 exports.create = function(grade, cb) {
-  db.query(`INSERT INTO description (descript, val, categoryid) VALUES ('${grade.make}', '${grade.model}', '${grade.serialnumber}')`,
+  db.query(`INSERT INTO description (descript, val, categoryid) VALUES ('${grade.descript}', '${grade.val}', '${grade.categoryid}')`,
     (err) => {
       if(err) return cb(err);
       db.query('SELECT * FROM description WHERE ID = (SELECT MAX(ID) FROM description);', cb)
@@ -48,7 +56,7 @@ exports.findById = function(id, cb) {
 };
 
 exports.update = function(id, grade, cb) {
-  db.query(`UPDATE description SET descript = '${grade.make}', val = '${grade.model}', categoryid = ${grade.total}  WHERE ID = '${id}'`, cb);
+  db.query(`UPDATE description SET descript = '${grade.descript}', val = '${grade.val}', categoryid = ${grade.categoryid}  WHERE ID = '${id}'`, cb);
 };
 
 exports.removeById = function(id, cb) {

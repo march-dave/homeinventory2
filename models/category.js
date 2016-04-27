@@ -18,25 +18,25 @@ var db = require('../config/db');
 // INSERT INTO category (room) VALUES ('Bedroom');
 // INSERT INTO category (room) VALUES ('Livingroom');
 
-// db.query(`CREATE TABLE IF NOT EXISTS category (
-//   id integer primary key auto_increment,
-//   room text
-// );`);
-
-// exports.get = function(cb) {
-//   db.query('SELECT * FROM category', cb);
-// };
-
-db.query(`CREATE TABLE IF NOT EXISTS description (
+db.query(`CREATE TABLE IF NOT EXISTS category (
   id integer primary key auto_increment,
-  descript text,
-  val integer,
-  categoryid integer
-  )`);
+  room text
+);`);
 
 exports.get = function(cb) {
-  db.query('SELECT * FROM description', cb);
+  db.query('SELECT * FROM category', cb);
 };
+
+// db.query(`CREATE TABLE IF NOT EXISTS description (
+//   id integer primary key auto_increment,
+//   descript text,
+//   val integer,
+//   categoryid integer
+//   )`);
+//
+// exports.get = function(cb) {
+//   db.query('SELECT * FROM description', cb);
+// };
 
 // exports.create = function(grade, cb) {
 //   db.query(`INSERT INTO description (descript, val, categoryid) VALUES ('${grade.make}', '${grade.model}', '${grade.serialnumber}')`,

@@ -22,20 +22,29 @@
       <thead>
         <tr>
           <th class='id'>id</th>
-          <th>make</th>
-          <th>model</th>
-          <th>serial number</th>
+          <th>descript</th>
+          <th>val</th>
+          <th>categoryid</th>
           <th>delete</th>
         </tr>
       </thead>
       <tbody class='gradeList'>
 
-
+        <% for(var i = 0; i < grades.length; i++) { %>
+          <tr data-id=<%=cars[i].id%>  >
+            <td><%= cars[i].id %></td>
+            <td><%= cars[i].descript %></td>
+            <td><%= cars[i].val %></td>
+            <td><%= cars[i].categoryid %></td>
+            <td><input type='checkbox' name='' id='' class='isDelete'></td>
+          </tr>
+        <%  }  %>
 
       <tr class='template'>
         <td class='id'></td>
-        <td class='make'></td>
-        <td class='serialnumber'></td>
+        <td class='descript'></td>
+        <td class='val'></td>
+        <td class='categoryid'></td>
         <td><input type='checkbox' name='' id='' class='isDelete'></td>
       </tr>
 
@@ -53,14 +62,9 @@
   		        <h4 class="modal-title" id="myModalLabel">Home Inventory</h4>
   		      </div>
 
-
   		      <div class="modal-body" style="padding: 40px 100px">
 
-              <select class="form-control">
-                <% for(var i = 0; i < cates.length; i++) { %>
-                <option value=<%= cates[i].id %>><%= cates[i].room %></option>
-                <%  }  %>
-              </select>
+              <label for="exampleInputName2">Rooms</label>
 
               <div id='id'></div>
 
@@ -69,16 +73,16 @@
   			      	<input type="text" class="form-control" id="id" placeholder="Auto Generate" readonly="true">
   			      </div>
   			      <div class="form-group">
-  			      	<label for="exampleInputName2">make</label>
-  			      	<input type="text" class="form-control" id="make" placeholder="make">
+  			      	<label for="exampleInputName2">description</label>
+  			      	<input type="text" class="form-control" id="descript" placeholder="description">
   			      </div>
   			      <div class="form-group">
-  			      	<label for="exampleInputName2">model</label>
-  			      	<input type="text" class="form-control" id="model" placeholder="model">
+  			      	<label for="exampleInputName2">value</label>
+  			      	<input type="text" class="form-control" id="val" placeholder="value">
   			      </div>
   			      <div class="form-group">
-  			      	<label for="exampleInputName2">serial number</label>
-  			      	<input type="text" class="form-control" id="serialnumber" placeholder="serialnumber">
+  			      	<label for="exampleInputName2"></label>
+  			      	<input type="text" class="form-control" id="categoryid" placeholder="">
   			      </div>
   		      </div>
 
