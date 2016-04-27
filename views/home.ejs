@@ -21,7 +21,7 @@
     <table class="table">
       <thead>
         <tr>
-          <th class='id'>id</th>
+          <th>id</th>
           <th>descript</th>
           <th>val</th>
           <th>categoryid</th>
@@ -31,11 +31,11 @@
       <tbody class='gradeList'>
 
         <% for(var i = 0; i < grades.length; i++) { %>
-          <tr data-id=<%=cars[i].id%>  >
-            <td><%= cars[i].id %></td>
-            <td><%= cars[i].descript %></td>
-            <td><%= cars[i].val %></td>
-            <td><%= cars[i].categoryid %></td>
+          <tr data-id=<%=grades[i].id%>  >
+            <td><%= grades[i].id %></td>
+            <td><%= grades[i].descript %></td>
+            <td><%= grades[i].val %></td>
+            <td><%= grades[i].categoryid %></td>
             <td><input type='checkbox' name='' id='' class='isDelete'></td>
           </tr>
         <%  }  %>

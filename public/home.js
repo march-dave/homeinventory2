@@ -32,9 +32,7 @@ function updateGrade(e) {
     data: grade
   })
   .done(function(data) {
-
-   $('.modal').modal('hide');
-
+     $('.modal').modal('hide');
   })
   .fail(function (err) {
     console.log(err);
@@ -102,16 +100,20 @@ function createNewGrade(e) {
     }
 
     $.post('/api/grades', homeinventory).done(newHomeinventory => {
+        newHomeinventory = newHomeinventory[0];
 
         var $grade = $('.template').clone();
         $grade.removeClass('template');
 
-        $grade.find('id').text(newHomeinventory.id);
+        console.log('newHomeinventory.id', newHomeinventory.id);
+        console.log('newHomeinventory.descript', newHomeinventory.descript);
+        console.log('newHomeinventory.val', newHomeinventory.val);
+
+        $grade.find('.id').text(newHomeinventory.id);
         $grade.find('.descript').text(newHomeinventory.descript);
         $grade.find('.val').text(newHomeinventory.val);
         $grade.find('.categoryid').text(newHomeinventory.categoryid);
 
-        // Bug: !!!!!! Not working properly!!!!!!!
         $('.gradeList').append($grade);
 
         $('.modal').modal('hide');
