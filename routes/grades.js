@@ -28,6 +28,7 @@ router.route('/')
   // delete
   router.delete('/:id', (req, res) => {
     var id = req.params.id;
+    // console.log('id', id);
     Grade.removeById(id, function(err, grade) {
       if(err) return res.status(400).send(err);
       res.send(grade);

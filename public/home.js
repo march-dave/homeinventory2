@@ -16,15 +16,21 @@ function renderPeople() {
   $.ajax(`/api/grades`, {
       method: 'GET'
   }).done(data => {
-    // $("<tr>").append
-      console.log('data', data);
 
+    for (var i=0; i<data.length; i++) {
+
+      var $grade = $('.template').clone();
+      $grade.removeClass('template');
+      $grade.find('.id').text(data[i].id);
+      $grade.find('.descript').text(data[i].descript);
+      $grade.find('.val').text(data[i].val);
+      $grade.find('.categoryid').text(data[i].categoryid);
+      $('.gradeList').append($grade);
+    }
   }).fail(err => {
       console.error('ERROR!!!!', err);
   });
-
 }
-
 
 // Update
 function updateGrade(e) {
@@ -59,7 +65,6 @@ function updateGrade(e) {
 function deleteGrade(e){
 
   var id = $(this).parent().parent().children()[0].textContent;
-
   var url = `api/grades/${id}`;
   $.ajax({
     url: url,
@@ -74,7 +79,6 @@ function deleteGrade(e){
 }
 
 function openModel(e) {
-
     var s = $(e.target).is('input');
     if (s === true) {
       return;
@@ -122,10 +126,6 @@ function createNewGrade(e) {
         var $grade = $('.template').clone();
         $grade.removeClass('template');
 
-        // console.log('newHomeinventory.id', newHomeinventory.id);
-        // console.log('newHomeinventory.descript', newHomeinventory.descript);
-        // console.log('newHomeinventory.val', newHomeinventory.val);
-
         $grade.find('.id').text(newHomeinventory.id);
         $grade.find('.descript').text(newHomeinventory.descript);
         $grade.find('.val').text(newHomeinventory.val);
@@ -140,5 +140,8 @@ function createNewGrade(e) {
 }
 
 function openNewTodoModal() {
+
+  // fields should clear before open dlg;
+
     $('.modal').modal('show');
 }

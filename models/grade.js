@@ -61,6 +61,7 @@ exports.update = function(id, grade, cb) {
 
 exports.removeById = function(id, cb) {
     // db.all(`DELETE FROM grade WHERE ID = '${id}'`, (err, grade) => {
+
     db.query(`DELETE FROM description WHERE ID = '${id}'`, (err, grade) => {
     if (err) return cb (err);
 
