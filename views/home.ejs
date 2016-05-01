@@ -30,6 +30,7 @@
       </thead>
       <tbody class='gradeList'>
 
+      <% if (typeof grades != 'undefined') { %>
         <% for(var i = 0; i < grades.length; i++) { %>
           <tr data-id=<%=grades[i].id%>  >
             <td><%= grades[i].id %></td>
@@ -38,7 +39,8 @@
             <td><%= grades[i].categoryid %></td>
             <td><input type='checkbox' name='' id='' class='isDelete'></td>
           </tr>
-        <%  }  %>
+        <% } %>
+      <% } %>
 
       <tr class='template'>
         <td class='id'></td>
@@ -65,6 +67,12 @@
   		      <div class="modal-body" style="padding: 40px 100px">
 
               <label for="exampleInputName2">Rooms</label>
+
+              <select class="form-control">
+                <% for(var i = 0; i < cates.length; i++) { %>
+                <option value='<%=cates[i].id%>'><%= cates[i].room %></option>
+                <%  }  %>
+              </select>
 
               <div id='id'></div>
 

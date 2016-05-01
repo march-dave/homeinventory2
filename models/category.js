@@ -2,14 +2,6 @@
 
 var db = require('../config/db');
 
-// db.query('SELECT * from description', function(err, rows, fields) {
-//   if (!err)
-//     console.log('The solution is: ', rows);
-//   else
-//     console.log('Error while performing Query.');
-// });
-
-
 // CREATE TABLE IF NOT EXISTS category (
 //   id integer primary key auto_increment,
 //   room text
@@ -57,19 +49,3 @@ exports.findById = function(id, cb) {
     cb(err, grade);
   });
 };
-
-// exports.update = function(id, grade, cb) {
-//   db.query(`UPDATE description SET descript = '${grade.make}', val = '${grade.model}', categoryid = ${grade.total}  WHERE ID = '${id}'`, cb);
-// };
-//
-// exports.removeById = function(id, cb) {
-//     // db.all(`DELETE FROM grade WHERE ID = '${id}'`, (err, grade) => {
-//     db.query(`DELETE FROM description WHERE ID = '${id}'`, (err, grade) => {
-//     if (err) return cb (err);
-//
-//     cb(err, grade);
-//   });
-// };
-//
-
-// db.end();

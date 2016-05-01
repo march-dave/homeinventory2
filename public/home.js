@@ -1,6 +1,8 @@
 'use strict';
 
 $(() => {
+    renderPeople();
+
     $('.newGrade').click(openNewTodoModal);
     $('form.newGradeForm').submit(createNewGrade);
     // $('form.newGradeForm').submit(updateGrade);
@@ -8,6 +10,21 @@ $(() => {
     $('table').on('click', openModel);
     $('.gradeList').on('click', '.isDelete', deleteGrade);
 });
+
+function renderPeople() {
+
+  $.ajax(`/api/grades`, {
+      method: 'GET'
+  }).done(data => {
+    // $("<tr>").append
+      console.log('data', data);
+
+  }).fail(err => {
+      console.error('ERROR!!!!', err);
+  });
+
+}
+
 
 // Update
 function updateGrade(e) {
@@ -105,9 +122,9 @@ function createNewGrade(e) {
         var $grade = $('.template').clone();
         $grade.removeClass('template');
 
-        console.log('newHomeinventory.id', newHomeinventory.id);
-        console.log('newHomeinventory.descript', newHomeinventory.descript);
-        console.log('newHomeinventory.val', newHomeinventory.val);
+        // console.log('newHomeinventory.id', newHomeinventory.id);
+        // console.log('newHomeinventory.descript', newHomeinventory.descript);
+        // console.log('newHomeinventory.val', newHomeinventory.val);
 
         $grade.find('.id').text(newHomeinventory.id);
         $grade.find('.descript').text(newHomeinventory.descript);
