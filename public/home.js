@@ -57,11 +57,8 @@ function updateGrade(e) {
     data: homeinventory
   })
   .done(function(data) {
-    // update record
-    $('#myModal').on('hidden.bs.modal',function() {
-      location.reload(true);
-    })
-
+    $('#myModal').modal('hide');
+    renderPeople();
   })
   .fail(function (err) {
     console.log(err);
