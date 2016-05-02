@@ -58,28 +58,9 @@ function updateGrade(e) {
   })
   .done(function(data) {
     // update record
-
-    console.log('homeinventory.id', homeinventory.id);
-    console.log('homeinventory.descript', homeinventory.descript);
-
-
-
-
-    // var id = $(e.target).closest('tr').children(0)[0].textContent;
-    // var descript = $(e.target).closest('tr').children(0)[1].textContent;
-    // var val = $(e.target).closest('tr').children(0)[2].textContent;
-    // var categoryid = $(e.target).closest('tr').children(0)[3].textContent;
-    //
-    // $('#id').val(id);
-    // $('#descript').val(descript);
-    // $('#val').val(val);
-    // $('#categoryid').val(categoryid);
-
-    // $('.modal').modal('hide');
-    $('.modal').on('hidden.bs.modal',function() {
+    $('#myModal').on('hidden.bs.modal',function() {
       location.reload(true);
     })
-
 
   })
   .fail(function (err) {
