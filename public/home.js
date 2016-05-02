@@ -4,8 +4,10 @@ $(() => {
     renderPeople();
 
     $('.newGrade').click(openNewTodoModal);
-    $('form.newGradeForm').submit(createNewGrade);
-    // $('form.newGradeForm').submit(updateGrade);
+
+    // $('form.newGradeForm').submit(createNewGrade);
+
+    $('form.newGradeForm').submit(updateGrade);
 
     $('table').on('click', openModel);
     $('.gradeList').on('click', '.isDelete', deleteGrade);
@@ -37,25 +39,48 @@ function updateGrade(e) {
   e.preventDefault();
 
   var id = $('#id').val();
-  var make = $('#make').val();
-  var model = $('#model').val();
-  var serialnumber = $('#serialnumber').val();
+  var descript = $('#descript').val();
+  var val = $('#val').val();
+  var categoryid = $('#categoryid').val();
 
   var homeinventory = {
     id: id,
-    make: make,
-    model: model,
-    serialnumber: model
+    descript: descript,
+    val: val,
+    categoryid: categoryid
   }
 
   var url = `api/grades/${id}`;
   $.ajax({
     url: url,
     type: 'PUT',
-    data: grade
+    data: homeinventory
   })
   .done(function(data) {
-     $('.modal').modal('hide');
+    // update record
+
+    console.log('homeinventory.id', homeinventory.id);
+    console.log('homeinventory.descript', homeinventory.descript);
+
+
+
+
+    // var id = $(e.target).closest('tr').children(0)[0].textContent;
+    // var descript = $(e.target).closest('tr').children(0)[1].textContent;
+    // var val = $(e.target).closest('tr').children(0)[2].textContent;
+    // var categoryid = $(e.target).closest('tr').children(0)[3].textContent;
+    //
+    // $('#id').val(id);
+    // $('#descript').val(descript);
+    // $('#val').val(val);
+    // $('#categoryid').val(categoryid);
+
+    // $('.modal').modal('hide');
+    $('.modal').on('hidden.bs.modal',function() {
+      location.reload(true);
+    })
+
+
   })
   .fail(function (err) {
     console.log(err);
@@ -86,14 +111,14 @@ function openModel(e) {
 
     $('#myModal').modal('show');
     var id = $(e.target).closest('tr').children(0)[0].textContent;
-    var make = $(e.target).closest('tr').children(0)[1].textContent;
-    var model = $(e.target).closest('tr').children(0)[2].textContent;
-    var serialnumber = $(e.target).closest('tr').children(0)[3].textContent;
+    var descript = $(e.target).closest('tr').children(0)[1].textContent;
+    var val = $(e.target).closest('tr').children(0)[2].textContent;
+    var categoryid = $(e.target).closest('tr').children(0)[3].textContent;
 
     $('#id').val(id);
-    $('#make').val(make);
-    $('#model').val(model);
-    $('#serialnumber').val(serialnumber);
+    $('#descript').val(descript);
+    $('#val').val(val);
+    $('#categoryid').val(categoryid);
 }
 
 function changeCheckbox(e) {
@@ -132,16 +157,22 @@ function createNewGrade(e) {
         $grade.find('.categoryid').text(newHomeinventory.categoryid);
 
         $('.gradeList').append($grade);
-
+        modalValueClear();
         $('.modal').modal('hide');
     }).fail(err => {
         console.error('ERROR', err);
     });
 }
 
+function modalValueClear() {
+  // fields clear before open dlg;
+  $('#id').val('');
+  $('#descript').val('');
+  $('#val').val('');
+  $('#categoryid').val('');
+}
+
 function openNewTodoModal() {
-
-  // fields should clear before open dlg;
-
-    $('.modal').modal('show');
+  // modalValueClear();
+  $('.modal').modal('show');
 }
