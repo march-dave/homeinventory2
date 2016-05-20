@@ -9,7 +9,7 @@
      "postinstall": "bower i"
   },
   "engines": {
-    "node": "5.10.1"
+    "node": "5.11.1"
   },
   "author": "",
   "license": "ISC",
